@@ -9,7 +9,7 @@ Author URI: https://gelo.fi
 License: GPL2
 */
 
-define('GELO_VAT_UPDATE_TEST_MODE', true); // set to true to test the plugin, in test mode runs the update after one minute
+define('GELO_VAT_UPDATE_TEST_MODE', false); // set to true to test the plugin, in test mode runs the update after one minute
 
 register_activation_hook(__FILE__, 'gelo_vat_update_activate');
 register_deactivation_hook(__FILE__, 'gelo_vat_update_deactivate');
