@@ -8,3 +8,6 @@
 
  # Warranty
  - none. Use at your own risk
+
+ # License
+ - public domain
