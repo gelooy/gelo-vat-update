@@ -18,10 +18,10 @@ register_deactivation_hook(__FILE__, 'gelo_vat_update_deactivate');
 function gelo_vat_update_activate() {
     add_action('gelo_vat_update_event', 'gelo_vat_update_function');
     if (GELO_VAT_UPDATE_TEST_MODE) {
-        wp_schedule_single_event(strtotime('+1 minute'), '', 'gelo_vat_update_event');
+        wp_schedule_single_event(strtotime('+1 minute'),  'gelo_vat_update_event');
         return;
     }
-    wp_schedule_single_event(strtotime('2024-09-01 00:00:00'), '', 'gelo_vat_update_event');
+    wp_schedule_single_event(strtotime('2024-09-01 00:00:00'),  'gelo_vat_update_event');
 }
 
 
