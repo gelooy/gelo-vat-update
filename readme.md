@@ -1,4 +1,4 @@
-# Gelo VAT Update
+# Gelo VAT Update for Woocommerce
 This plugin is designed to automatically update the tax rate from 24 to 25.5 at Sep 1st 00.00.00 2024.
 
 ## Usage
