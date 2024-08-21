@@ -9,8 +9,7 @@ Author URI: https://gelo.fi
 License: GPL2
 */
 
-define('GELO_VAT_UPDATE_PLUGIN_DIR', plugin_dir_path(__FILE__));
-define('GELO_VAT_UPDATE_PLUGIN_URL', plugin_dir_url(__FILE__));
+define('GELO_VAT_UPDATE_TEST_MODE', false); // set to true to test the plugin, in test mode runs the update after one minute
 
 register_activation_hook(__FILE__, 'gelo_vat_update_activate');
 register_deactivation_hook(__FILE__, 'gelo_vat_update_deactivate');
@@ -18,6 +17,10 @@ register_deactivation_hook(__FILE__, 'gelo_vat_update_deactivate');
 // Plugin activation callback
 function gelo_vat_update_activate() {
     add_action('gelo_vat_update_event', 'gelo_vat_update_function');
+    if (GELO_VAT_UPDATE_TEST_MODE) {
+        wp_schedule_event(strtotime('+1 minute'), '', 'gelo_vat_update_event');
+        return;
+    }
     wp_schedule_event(strtotime('2024-09-01 00:00:00'), '', 'gelo_vat_update_event');
 }
 
