@@ -19,9 +19,10 @@ function gelo_vat_update_activate() {
     add_action('gelo_vat_update_event', 'gelo_vat_update_function');
     if (GELO_VAT_UPDATE_TEST_MODE) {
         wp_schedule_single_event(strtotime('+1 minute'),  'gelo_vat_update_event');
+        error_log('Gelo VAT Update plugin is in test mode, update will run after one minute');
         return;
     }
-    wp_schedule_single_event(strtotime('2024-09-01 00:00:00'),  'gelo_vat_update_event');
+    wp_schedule_single_event(1725138000,  'gelo_vat_update_event'); // 1725138000 timestamp for Sep 1st 00.00.00 2024 Finnish time, not using strtotime to avoid timezone issues
 }
 
 
@@ -39,6 +40,9 @@ function gelo_vat_update_function() {
     ); 
     remove_action('gelo_vat_update_event', 'gelo_vat_update_function');  
 }
+add_action('gelo_vat_update_event', 'gelo_vat_update_function');
+
+
 
 // Plugin deactivation callback
 function gelo_vat_update_deactivate() {
